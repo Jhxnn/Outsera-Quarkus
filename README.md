@@ -3,13 +3,13 @@ Como rodar o projeto
 1. **Clone o repositório**
 
 ```bash
-git clone https://github.com/Jhxnn/Outsera.git
+git clone https://github.com/Jhxnn/Outsera-Quarkus.git
 cd outsera
 ```
 
 2. **Rode o projeto**
 ```bash
-mvn spring-boot:run
+mvn quarkus:dev
 ```
 
 
@@ -25,8 +25,7 @@ mvn test
 
 Exemplo de resposta:
 
-![image](https://github.com/user-attachments/assets/f76775bf-e80c-49b3-85a1-fa76d559ca82)
-
+![img.png](img.png)
 
 
 5. Acesse o endpoint para ver o maior e menor intervalo de prêmios de um produtor:
@@ -34,4 +33,4 @@ Exemplo de resposta:
 
 Exemplo de resposta:
 
-![image](https://github.com/user-attachments/assets/c653f01f-3fdc-4bb5-b7ad-d3b15d405afa)
+![img_1.png](img_1.png)
