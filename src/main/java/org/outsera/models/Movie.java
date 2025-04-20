@@ -12,7 +12,7 @@ public class Movie extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private UUID movieId;
+    private Long movieId;
 
     private Integer movieYear;
 
@@ -51,11 +51,11 @@ public class Movie extends PanacheEntityBase {
         this.studios = studios;
     }
 
-    public UUID getMovieId() {
+    public Long getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(UUID movieId) {
+    public void setMovieId(Long movieId) {
         this.movieId = movieId;
     }
 
