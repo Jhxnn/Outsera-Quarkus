@@ -113,5 +113,5 @@ public class MovieService {
     public void deleteMovie(Long id) {
         Movie movie = findById(id);
         movieRepository.delete(movie);
-    }
+    } 
 }

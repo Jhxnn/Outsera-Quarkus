@@ -25,7 +25,7 @@ mvn test
 
 Exemplo de resposta:
 
-![img.png](img.png)
+![image](https://github.com/user-attachments/assets/aaf63ec7-a565-442d-96d8-c453288ae1b6)
 
 
 5. Acesse o endpoint para ver o maior e menor intervalo de prêmios de um produtor:
@@ -33,4 +33,4 @@ Exemplo de resposta:
 
 Exemplo de resposta:
 
-![img_1.png](img_1.png)
+![image](https://github.com/user-attachments/assets/306d0b39-094b-464d-961f-d42b97016190)
