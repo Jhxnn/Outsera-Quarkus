@@ -1,9 +1,10 @@
 package org.outsera.config;
 
-
-import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import io.quarkus.runtime.StartupEvent;
 import org.outsera.models.Movie;
 import org.outsera.repositories.MovieRepository;
 
@@ -16,8 +17,12 @@ public class CsvLoad {
     @Inject
     MovieRepository movieRepository;
 
-    @PostConstruct
-    void init() {
+    public void onStart(@Observes StartupEvent ev) {
+        loadCsv();
+    }
+
+    @Transactional
+    void loadCsv() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(
                 getClass().getResourceAsStream("/movies.csv")))) {
 
