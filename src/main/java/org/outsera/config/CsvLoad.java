@@ -36,7 +36,6 @@ public class CsvLoad {
                 movie.setStudios(partes[2]);
                 movie.setProducers(partes[3]);
                 movie.setWinner(partes.length >= 5 ? partes[4] : "no");
-
                 movieRepository.persist(movie);
             }
 

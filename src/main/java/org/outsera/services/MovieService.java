@@ -106,7 +106,7 @@ public class MovieService {
             movie.setWinner(movieDto.winner());
         }
 
-        movieRepository.persist(movie); // persist já atualiza se for uma entidade gerenciada
+        movieRepository.persist(movie);
         return movie;
     }
 
