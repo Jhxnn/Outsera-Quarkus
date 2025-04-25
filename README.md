@@ -36,5 +36,4 @@ Exemplo de resposta:
 ![image](https://github.com/user-attachments/assets/306d0b39-094b-464d-961f-d42b97016190)
 
 6. Acesse o endpoint para ver a documentação do projeto:
-   
    http://localhost:8080/q/swagger-ui/
