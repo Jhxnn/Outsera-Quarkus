@@ -23,38 +23,20 @@ public class MovieServiceTest {
     @Inject
     MovieService movieService;
 
-    @Inject
-    MovieRepository movieRepository;
-
-    @BeforeAll
-    @Transactional
-    void setup() {
-        movieRepository.deleteAll();
-
-        movieRepository.persist(new Movie(2000, "Filme A", "Estudio", "Produtor 1", "yes"));
-        movieRepository.persist(new Movie(2002, "Filme B", "Estudio", "Produtor 1", "yes"));
-        movieRepository.persist(new Movie(2010, "Filme C", "Estudio", "Produtor 2", "yes"));
-        movieRepository.persist(new Movie(2020, "Filme D", "Estudio", "Produtor 2", "yes"));
-        movieRepository.persist(new Movie(2022, "Filme E", "Estudio", "Produtor 2", "yes"));
-        movieRepository.persist(new Movie(2021, "Filme F", "Estudio", "Produtor 3", "no"));
-    }
-
     @Test
-    void testFindIntervals() {
+    void testFindIntervalsMatchesExpectedJsonFile() throws Exception {
         IntervalResponseDto response = movieService.findIntervals();
 
-        List<IntervalItemDto> min = response.min();
-        List<IntervalItemDto> max = response.max();
+        String expectedJson = new String(getClass().getClassLoader()
+                .getResourceAsStream("expected_intervals.json").readAllBytes());
 
-        assertNotNull(min);
-        assertNotNull(max);
+        var mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+        String actualJson = mapper.writeValueAsString(response);
 
-        boolean hasMin = min.stream()
-                .anyMatch(i -> i.producer().equals("Produtor 2") && i.interval() == 2 && i.previousWin() == 2020 && i.followingWin() == 2022);
-        assertTrue(hasMin);
+        var expectedNode = mapper.readTree(expectedJson);
+        var actualNode = mapper.readTree(actualJson);
 
-        boolean hasMax = max.stream()
-                .anyMatch(i -> i.producer().equals("Produtor 2") && i.interval() == 10 && i.previousWin() == 2010 && i.followingWin() == 2020);
-        assertTrue(hasMax);
+        assertEquals(expectedNode, actualNode, "A resposta da API não está igual ao JSON");
     }
+
 }
